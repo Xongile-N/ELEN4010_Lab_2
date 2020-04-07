@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 // mounting our routers
 app.use('/', mainRouter)
-app.use('/', classRouter)
+app.use('/class', classRouter)
 
-app.listen(8080)
+app.listen(3000)
 console.log('Express server running on port 3000')
