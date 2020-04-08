@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Edit</title>
+<title>Class List: Delete</title>
 <meta charset="utf-8" />
 </head>
 <body>
-
+<form action="api/edit" method="post">
+<div>
+<label for="studentName">Enter The Student's name that you want to edit:</label>
+<input type="text" id="studentOld" name="studentOld">
+<label for="studentName">Enter The Student's new name:</label>
+<input type="text" id="studentNew" name="studentNew">
+</div>
+<div class="button">
+<button type="submit">Edit</button>
+</div>
+</form>
 </body>
 </html>
+

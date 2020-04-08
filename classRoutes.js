@@ -40,11 +40,17 @@ router.get('/delete', function (req, res) {
   res.sendFile(path.join(__dirname, 'views', 'class', 'delete.html'))
 })
 // Edit
-router.post('/edit', function (req, res) {
+router.get('/edit', function (req, res) {
   res.sendFile(path.join(__dirname, 'views', 'class', 'edit.html'))
 })
 router.post('/api/edit', function (req, res) {
   console.log('editing a student entry')
+  var i = classList.indexOf(req.body.studentOld)
+  if (i > -1) {
+    classList.splice(i, 1)
+  }
+  classList.push(req.body.studentNew)
+  res.redirect(req.baseUrl + '/api/list')
 })
 
 module.exports = router
