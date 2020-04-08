@@ -29,7 +29,12 @@ router.get('/create', function (req, res) {
 })
 // Delete
 router.post('/api/delete', function (req, res) {
-  console.log('deleting a student entry')
+  console.log('Deleting the following student:', req.body.studentDel)
+  var i = classList.indexOf(req.body.studentDel)
+  if (i > -1) {
+    classList.splice(i, 1)
+  }
+  res.redirect(req.baseUrl + '/api/list')
 })
 router.get('/delete', function (req, res) {
   res.sendFile(path.join(__dirname, 'views', 'class', 'delete.html'))
