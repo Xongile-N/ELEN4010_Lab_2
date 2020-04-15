@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const router = express.Router()
-const classList = [] // our class list array
+const classList = ['Test'] // our class list array
 
 router.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'views', 'class', 'index.html'))
