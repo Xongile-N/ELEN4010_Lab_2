@@ -1,5 +1,5 @@
 const fetch = require('node-fetch')
-fetch('/class/api/list') // Returns a Promise for the GET request
+fetch('./class/api/list') // Returns a Promise for the GET request
   .then(function (response) {
     // Check if the request returned a valid code
     if (response.ok) {
