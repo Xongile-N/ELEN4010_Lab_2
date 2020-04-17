@@ -1,5 +1,4 @@
-const fetch = require('node-fetch')
-fetch('./class/api/list') // Returns a Promise for the GET request
+fetch('/class/api/list') // Returns a Promise for the GET request
   .then(function (response) {
     // Check if the request returned a valid code
     if (response.ok) {
@@ -13,7 +12,7 @@ fetch('./class/api/list') // Returns a Promise for the GET request
     data.forEach(function (student) {
       // Create a new list entry
       const li = document.createElement('LI')
-      const liText = document.createTextNode(student).value
+      const liText = document.createTextNode(student)
       // Append the class to the list element
       li.className += 'student'
 
