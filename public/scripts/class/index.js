@@ -8,6 +8,15 @@ fetch('/class/api/list') // Returns a Promise for the GET request
   .then(function (data) { // Display the JSON data appropriately
     // Retrieve the classList outer element
     const classList = document.getElementById('classList')
+
+    document.getElementById('addStudentButton').onclick = function () {
+      var studN = document.getElementById('newStudentInput').value
+      var ol = document.getElementById('classList')
+      var li = document.createElement('li')
+      li.appendChild(document.createTextNode(studN))
+      ol.appendChild(li)
+    }
+
     // Iterate through all students
     data.forEach(function (student) {
       // Create a new list entry
@@ -19,10 +28,15 @@ fetch('/class/api/list') // Returns a Promise for the GET request
       // Append list text to list item and list item to list
       li.appendChild(liText)
       classList.appendChild(li)
+
+      // document.getElementById('addStudentButton').onclick = function () {
+      //   var studN = document.getElementById('newStudentInput').value
+      //   alert(studN)
+      // }
     })
   })
   .catch(function (e) { // Process error for request
-    window.alert(e) // Displays a browser alert with the error message.
+    alert(e) // Displays a browser alert with the error message.
     // This will be the string thrown in line 7 IF the
     // response code is the reason for jumping to this
     // catch() function.
