@@ -9,12 +9,16 @@ fetch('/class/api/list') // Returns a Promise for the GET request
     // Retrieve the classList outer element
     const classList = document.getElementById('classList')
 
+    // Delete students from the list
+    document.getElementById('deleteStudentButton').onclick = function () {
+      var studN = document.getElementById('newStudentInput').value
+      alert(studN)
+    }
+
+    // Add students to the list
     document.getElementById('addStudentButton').onclick = function () {
       var studN = document.getElementById('newStudentInput').value
-      var ol = document.getElementById('classList')
-      var li = document.createElement('li')
-      li.appendChild(document.createTextNode(studN))
-      ol.appendChild(li)
+      classList.push(studN)
     }
 
     // Iterate through all students
