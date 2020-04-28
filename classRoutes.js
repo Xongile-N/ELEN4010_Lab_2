@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const router = express.Router()
-const classList = [] // our class list array
+const classList = ['Test'] // our class list array
 
 router.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'views', 'class', 'index.html'))
@@ -21,7 +21,7 @@ router.get('/api/get/:id', function (req, res) {
 router.post('/api/create', function (req, res) {
   console.log('Creating the following student:', req.body.student)
   classList.push(req.body.student)
-  res.redirect(req.baseUrl + '/api/list')
+  // res.redirect(req.baseUrl + '/api/list')
 })
 router.get('/create', function (req, res) {
   res.sendFile(path.join(__dirname, 'views', 'class', 'create.html'))
