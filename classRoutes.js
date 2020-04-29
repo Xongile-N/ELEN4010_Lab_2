@@ -21,7 +21,7 @@ router.get('/api/get/:id', function (req, res) {
 router.post('/api/create', function (req, res) {
   console.log('Creating the following student:', req.body.student)
   classList.push(req.body.student)
-  res.status(201).json(classList)
+  res.status(201).json({ statusMessage: '201 Created' })
   // res.redirect(req.baseUrl + '/api/list')
 })
 router.get('/create', function (req, res) {
@@ -34,7 +34,7 @@ router.post('/api/delete', function (req, res) {
   if (i > -1) {
     classList.splice(i, 1)
   }
-  res.status(201).json(classList)
+  res.status(201).json({ statusMessage: '201 Created' })
   // res.redirect(req.baseUrl + '/api/list')
 })
 
@@ -52,7 +52,7 @@ router.post('/api/edit', function (req, res) {
     classList.splice(i, 1)
   }
   classList.push(req.body.studentNew)
-  res.status(201).json(classList)
+  res.status(201).json({ statusMessage: '201 Created' })
   // res.redirect(req.baseUrl + '/api/list')
 })
 // Add Info

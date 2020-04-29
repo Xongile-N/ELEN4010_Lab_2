@@ -16,15 +16,17 @@ window.onload = function () {
       })
         .then(function (response) {
           if (response.ok) {
-            location.reload()
             return response.json()
           } // Return the response parse as JSON if code is valid
           else { throw 'Failed!' }
+        })
+        .then(function () {
+          location.reload()
         }).catch(function (e) { // Process error for request
           alert(e) // Displays a browser alert with the error message.
-        // This will be the string thrown in line 7 IF the
-        // response code is the reason for jumping to this
-        // catch() function.
+          // This will be the string thrown in line 7 IF the
+          // response code is the reason for jumping to this
+          // catch() function.
         })
     } catch (err) {
       console.error(`Error: ${err}`)
@@ -47,15 +49,17 @@ window.onload = function () {
       })
         .then(function (response) {
           if (response.ok) {
-            location.reload()
             return response.json()
           } // Return the response parse as JSON if code is valid
           else { throw 'Failed!' }
+        })
+        .then(function () {
+          location.reload()
         }).catch(function (e) { // Process error for request
           alert(e) // Displays a browser alert with the error message.
-        // This will be the string thrown in line 7 IF the
-        // response code is the reason for jumping to this
-        // catch() function.
+          // This will be the string thrown in line 7 IF the
+          // response code is the reason for jumping to this
+          // catch() function.
         })
     } catch (err) {
       console.error(`Error: ${err}`)
@@ -82,10 +86,12 @@ window.onload = function () {
       })
         .then(function (response) {
           if (response.ok) {
-            location.reload()
             return response.json()
           } // Return the response parse as JSON if code is valid
           else { throw 'Failed!' }
+        })
+        .then(function () {
+          location.reload()
         }).catch(function (e) { // Process error for request
           alert(e) // Displays a browser alert with the error message.
         // This will be the string thrown in line 7 IF the
