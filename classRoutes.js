@@ -52,7 +52,8 @@ router.post('/api/edit', function (req, res) {
     classList.splice(i, 1)
   }
   classList.push(req.body.studentNew)
-  res.redirect(req.baseUrl + '/api/list')
+  res.status(201).json(classList)
+  // res.redirect(req.baseUrl + '/api/list')
 })
 // Add Info
 router.get('/addInfo', function (req, res) {

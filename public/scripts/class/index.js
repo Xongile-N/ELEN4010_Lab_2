@@ -1,4 +1,4 @@
-// Add, Delete Student
+// Add, Delete, Edit Student
 window.onload = function () {
   // Adding the student
   const buttonAdd = document.getElementById('addStudentButton')
@@ -39,6 +39,41 @@ window.onload = function () {
 
     try {
       fetch('/class/api/delete', {
+        method: 'post', // specify method to use
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data) // fill body of request
+      })
+        .then(function (response) {
+          if (response.ok) {
+            location.reload()
+            return response.json()
+          } // Return the response parse as JSON if code is valid
+          else { throw 'Failed!' }
+        }).catch(function (e) { // Process error for request
+          alert(e) // Displays a browser alert with the error message.
+        // This will be the string thrown in line 7 IF the
+        // response code is the reason for jumping to this
+        // catch() function.
+        })
+    } catch (err) {
+      console.error(`Error: ${err}`)
+    }
+  })
+
+  // Edit a student
+  const buttonEdit = document.getElementById('editStudentButton')
+  buttonEdit.addEventListener('click', async _ => {
+    const oldStud = document.getElementById('newStudentInput').value
+    const editedStud = document.getElementById('editedStudentInput').value
+    const data = {
+      studentOld: oldStud,
+      studentNew: editedStud
+    }
+
+    try {
+      fetch('/class/api/edit', {
         method: 'post', // specify method to use
         headers: {
           'Content-Type': 'application/json'
