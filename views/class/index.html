@@ -4,18 +4,21 @@
 <title>Class List</title>
 <meta charset="utf-8" />
 <script src="/cdn/scripts/class/index.js"></script><!-- Our JavaScript code for this page-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<div class="jumbotron text-center">
 <h1>Students in the School of EIE:</h1>
+</div>
 <ol id="classList">
 <!-- The list of students in the school-->
 </ol>
-Student name you want to Edit, Delete or Add:
+<p class="text-muted">Student name you want to Edit, Delete or Add:</p>
 <input type="text" id="newStudentInput"></input>
-New name for the student you want to Edit:
+<p class="text-info">New name for the student you want to Edit:</p>
 <input type="text" id="editedStudentInput"></input>
-<button type="submit" id="addStudentButton">Add</button>
-<button type="button" id="deleteStudentButton">Delete</button>
-<button type="button" id="editStudentButton">Edit</button>
+<button type="button" class="btn btn-info" id="addStudentButton">Add</button>
+<button type="button" class="btn btn-secondary" id="deleteStudentButton">Delete</button>
+<button type="button" class="btn btn-dark" id="editStudentButton">Edit</button>
 </body>
 </html>
