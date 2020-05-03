@@ -1,16 +1,4 @@
-function filterByTerm (inputArr, searchTerm) {
-  const regex = new RegExp(searchTerm, 'i')
-  return inputArr.filter(function (arrayElement) {
-    return arrayElement.url.match(regex)
-  })
-}
-
-// Describe is a jest method for containing one or more
-// related tests. New suite of tests for functionality
-// must be written here
-
-// Two arguments string for describing test suite
-// and a callback function
+/* eslint-env jest */
 
 describe('Filter function', () => {
   test('it should filter by a search term (link)', () => {
@@ -22,9 +10,17 @@ describe('Filter function', () => {
 
     const output = [{ id: 3, url: 'https://www.link3.dev' }]
 
-    expect(filterByTerm(input, 'link')).toEqual(output) // first test
-    expect(filterByTerm(input, 'LINK')).toEqual(output) // New test
-    expect(filterByTerm(input, 'uRl')).not.toBe(output) // Exercise Test 1.
-    expect(filterByTerm(input, '')).not.toBe(output) // Exercise Test 2.
+    expect(filterByTerm(input, 'link')).toEqual(output)
+
+    expect(filterByTerm(input, 'LINK')).toEqual(output)
+    expect(filterByTerm(input, '')).toThrowError('Search term must be present')
   })
 })
+
+function filterByTerm (inputArr, searchTerm) {
+  if (!searchTerm) throw Error('Search term must be present')
+  const regex = new RegExp(searchTerm, 'i')
+  return inputArr.filter(function (arrayElement) {
+    return arrayElement.url.match(regex)
+  })
+}
