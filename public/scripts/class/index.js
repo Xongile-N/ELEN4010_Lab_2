@@ -5,7 +5,6 @@ window.onload = function () {
   buttonAdd.addEventListener('click', async _ => {
     const info = document.getElementById('newStudentInput').value
     const data = { student: info }
-
     try {
       fetch('/class/api/create', {
         method: 'post', // specify method to use
@@ -21,6 +20,7 @@ window.onload = function () {
           else { throw 'Failed!' }
         })
         .then(function () {
+          localStorage.setItem('classList_', document.getElementById('classList'))
           location.reload()
         }).catch(function (e) { // Process error for request
           alert(e) // Displays a browser alert with the error message.
@@ -38,7 +38,6 @@ window.onload = function () {
   buttonDel.addEventListener('click', async _ => {
     const info = document.getElementById('newStudentInput').value
     const data = { studentDel: info }
-
     try {
       fetch('/class/api/delete', {
         method: 'post', // specify method to use
@@ -75,7 +74,6 @@ window.onload = function () {
       studentOld: oldStud,
       studentNew: editedStud
     }
-
     try {
       fetch('/class/api/edit', {
         method: 'post', // specify method to use
@@ -113,7 +111,10 @@ fetch('/class/api/list') // Returns a Promise for the GET request
   })
   .then(function (data) { // Display the JSON data appropriately
     // Retrieve the classList outer element
-    const classList = document.getElementById('classList')
+
+    // const classList = document.getElementById('classList')
+    const classList = JSON.parse(localStorage.getItem('classList_'))
+    // alert(localStorage.getItem('classList_'))
 
     // Iterate through all students
     data.forEach(function (student) {
@@ -126,11 +127,6 @@ fetch('/class/api/list') // Returns a Promise for the GET request
       // Append list text to list item and list item to list
       li.appendChild(liText)
       classList.appendChild(li)
-
-      // document.getElementById('addStudentButton').onclick = function () {
-      //   var studN = document.getElementById('newStudentInput').value
-      //   alert(studN)
-      // }
     })
   })
   .catch(function (e) { // Process error for request
@@ -139,4 +135,3 @@ fetch('/class/api/list') // Returns a Promise for the GET request
     // response code is the reason for jumping to this
     // catch() function.
   })
-// Add students to the list
