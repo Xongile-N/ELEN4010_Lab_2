@@ -1,4 +1,5 @@
 // Add, Delete, Edit Student
+classListA=["test", "test2"];
 window.onload = function () {
   // Adding the student
   const buttonAdd = document.getElementById('addStudentButton')
@@ -6,13 +7,14 @@ window.onload = function () {
     const info = document.getElementById('newStudentInput').value
     const data = { student: info }
     try {
-      fetch('/class/api/create', {
+    fetch('/class/api/create', {
         method: 'post', // specify method to use
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data) // fill body of request
+        body: JSON.stringify(classListA) // fill body of request
       })
+  
         .then(function (response) {
           if (response.ok) {
             return response.json()
@@ -20,8 +22,9 @@ window.onload = function () {
           else { throw 'Failed!' }
         })
         .then(function () {
-          localStorage.setItem('classList_', document.getElementById('classList'))
-          location.reload()
+          //console.log(document.getElementById('classList'))
+          localStorage.setItem("classList_", JSON.stringify(classListA))
+          //location.reload()
         }).catch(function (e) { // Process error for request
           alert(e) // Displays a browser alert with the error message.
           // This will be the string thrown in line 7 IF the
@@ -101,8 +104,21 @@ window.onload = function () {
     }
   })
 }
-
-fetch('/class/api/list') // Returns a Promise for the GET request
+fetch('/class/api/createList', {
+  method: 'post', // specify method to use
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(classListA) // fill body of request
+})       
+ .then(function (response) {
+  if (response.ok) {
+    return response.json()
+  } // Return the response parse as JSON if code is valid
+  else { throw 'Failed!' }
+}).then(function(response){
+  console.log(response)
+return fetch('/class/api/list')}) // Returns a Promise for the GET request
   .then(function (response) {
     // Check if the request returned a valid code
     if (response.ok) {
@@ -112,8 +128,9 @@ fetch('/class/api/list') // Returns a Promise for the GET request
   .then(function (data) { // Display the JSON data appropriately
     // Retrieve the classList outer element
 
-    // const classList = document.getElementById('classList')
-    const classList = JSON.parse(localStorage.getItem('classList_'))
+    const classList = document.getElementById('classList')
+    const classList_ = JSON.parse(localStorage.getItem('classList_'))
+    //console.log(classList_)
     // alert(localStorage.getItem('classList_'))
 
     // Iterate through all students

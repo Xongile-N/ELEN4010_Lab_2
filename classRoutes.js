@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const router = express.Router()
-const classList = [] // our class list array
+let classList = [] // our class list array
 
 router.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'views', 'class', 'index.html'))
@@ -22,6 +22,13 @@ router.post('/api/create', function (req, res) {
   console.log('Creating the following student:', req.body.student)
   classList.push(req.body.student)
   res.status(201).json({ statusMessage: '201 Created' })
+  // res.redirect(req.baseUrl + '/api/list')
+})
+router.post('/api/createList', function (req, res) {
+ console.log(req.body)
+  // console.log('Creating the following students:', req.body.students)
+  classList=req.body;
+  res.status(201).json({ statusMessage: '201 Created List' })
   // res.redirect(req.baseUrl + '/api/list')
 })
 router.get('/create', function (req, res) {
